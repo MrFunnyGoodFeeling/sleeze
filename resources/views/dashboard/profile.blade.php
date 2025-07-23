@@ -7,7 +7,7 @@ Profile
 @section('content')
 
 <!-- Navbar -->
-<x-navbar page="settings" />
+<x-navbar page="profile" />
 
 <!-- Breadcrumb -->
 <div class="bg-white border-b border-gray-200">
@@ -34,7 +34,7 @@ Profile
 <div class="divide-y divide-gray-200">
 
     <!-- Section -->
-    <livewire:user.settings />
+    <livewire:dashboard.profile />
 
 </div>
 <!-- END OF Main -->

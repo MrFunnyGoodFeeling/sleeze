@@ -39,6 +39,10 @@ class User extends Authenticatable
         return $this->roles()->where('name', 'admin')->exists();
     }
 
+    public function isMember(){
+        return $this->roles()->whereIn('name', ['admin', 'member'])->exists();
+    }
+
     public function profile(){
         return $this->hasOne(UserProfile::class);
     }

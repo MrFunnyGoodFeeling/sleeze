@@ -19,11 +19,11 @@ Restricted Area
 		<div class="max-w-xl w-full mx-auto">
 			@auth
 				<a href="/dashboard">
-					<img src="/img/sleeze/kelli-mcclintock-izjIyGze7RY-unsplash-edit.jpg" class="rounded-md">
+					<img src="/img/undraw/undraw_not-found_6bgl.svg" class="rounded-md">
 				</a>
 			@else
 				<a href="/">
-					<img src="/img/sleeze/kelli-mcclintock-izjIyGze7RY-unsplash-edit.jpg" class="rounded-md">
+					<img src="/img/undraw/undraw_not-found_6bgl.svg" class="rounded-md">
 				</a>
 			@endauth
 		</div>

@@ -34,7 +34,7 @@ Admin
 <div class="divide-y divide-gray-200">
 
     <!-- Section -->
-    <div class="bg-white py-8">
+    <div class="bg-white py-4">
         <div class="mx-auto max-w-7xl">
             <div class="px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-2 gap-10">
@@ -43,30 +43,6 @@ Admin
                             <li>
                                 <a href="/admin/users" class="hover:text-indigo-500">
                                     Users
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <ul>
-                            <li>
-                                <a href="/design" class="hover:text-indigo-500">
-                                    Design
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/design/forms" class="hover:text-indigo-500">
-                                    Forms
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/design/modals" class="hover:text-indigo-500">
-                                    Modals
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/design/test" class="hover:text-indigo-500">
-                                    Test
                                 </a>
                             </li>
                         </ul>

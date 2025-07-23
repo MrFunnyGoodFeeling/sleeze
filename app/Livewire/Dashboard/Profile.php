@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\User;
+namespace App\Livewire\Dashboard;
 
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -11,7 +11,7 @@ use App\Models\UserProfile;
 
 use Illuminate\Support\Facades\Auth;
 
-class EditProfile extends Component
+class Profile extends Component
 {
 
     use WithFileUploads;
@@ -37,12 +37,12 @@ class EditProfile extends Component
     public $alertDanger = "";
 
     public function render(){
-        return view('livewire.user.edit-profile');
+        return view('livewire.dashboard.profile');
     }
 
     public function fetchProfile()
     {
-        $this->profile = UserProfile::firstOrCreate(['user_id' => $this->user->id]);
+        $this->profile = UserProfile::where('user_id', $this->user->id)->first();
         $this->newNickname = $this->profile->nickname;
         $this->newTitle = $this->profile->title;
         $this->newAbout = $this->profile->about;

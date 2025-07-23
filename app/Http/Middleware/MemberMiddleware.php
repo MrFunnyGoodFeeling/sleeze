@@ -8,12 +8,12 @@ use Symfony\Component\HttpFoundation\Response;
 
 use Illuminate\Support\Facades\Auth;
 
-class AdminMiddleware
+class MemberMiddleware
 {
 
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::check() && Auth::user()->isAdmin()){
+        if(Auth::check() && Auth::user()->isMember()){
             return $next($request);
         }
 

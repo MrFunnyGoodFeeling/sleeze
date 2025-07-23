@@ -7,7 +7,7 @@ Users
 @section('content')
 
 <!-- Navbar -->
-<x-navbar page="users" />
+<x-navbar page="admin" />
 
 <!-- Breadcrumb -->
 <div class="bg-white border-b border-gray-200">
@@ -44,65 +44,7 @@ Users
 <div class="divide-y divide-gray-200">
 
     <!-- Section -->
-    <div class="bg-white py-8">
-        <div class="mx-auto max-w-7xl">
-            <div class="sm:px-6 lg:px-8">
-                <div class="overflow-hidden border-t border-b sm:border-r sm:border-l border-gray-200 sm:rounded-md shadow-sm">
-                    <table class="w-full divide-y divide-gray-200">
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th scope="col" class="py-3 px-6 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    name
-                                </th>
-                                <th scope="col" class="py-3 px-6 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    e-mail
-                                </th>
-                                <th scope="col" class="py-3 px-6 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    reg. date
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-white divide-y divide-gray-200">
-                            @foreach($users as $user)
-                                <tr>
-                                    <td class="py-4 px-6">
-                                        <div class="flex items-center space-x-1">
-                                            <p class="text-gray-700 text-sm font-medium">
-                                                <a href="#" class="hover:text-indigo-500">
-                                                    {{ $user->name }}
-                                                </a>
-                                            </p>
-                                            @if($user->isAdmin())
-                                                <span class="inline-flex items-center rounded-full bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-700 ring-1 ring-inset ring-indigo-50">
-                                                    Admin
-                                                </span>
-                                            @endif
-                                        </div>
-                                    </td>
-                                    <td class="py-4 px-6">
-                                        <p class="text-gray-700 text-sm">
-                                            {{ $user->email }}
-                                        </p>
-                                    </td>
-                                    <td class="py-4 px-6">
-                                        <p class="text-gray-700 text-sm">
-                                            {{ date('F j, Y', strtotime($user->created_at)) }}
-                                        </p>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-                @if($users->count() > 10)
-                    <div class="mt-2.5">
-                        <x-pagination :items="$users" />
-                    </div>
-                @endif
-            </div>
-        </div>
-    </div>
-    <!-- END OF Section -->
+    <livewire:admin.index-users />
 
 </div>
 <!-- END OF Main -->

@@ -50,20 +50,22 @@
                             <div>
                                 <button type="button" @click="open = !open" class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                                     <span class="absolute -inset-1.5"></span>
-                                    @if(!empty(Auth::user()->avatar))
-                                        <img src="{{ Storage::url(Auth::user()->avatar) }}" class="h-8 w-8 rounded-full" alt="Avatar">
+                                    @if(Auth::user()->profile && Auth::user()->profile->avatar)
+                                        <img src="{{ Storage::url(Auth::user()->profile->avatar) }}" class="h-8 w-8 rounded-full" alt="Avatar">
                                     @else
                                         <img src="/img/avatars/default.png" class="h-8 w-8 rounded-full" alt="Avatar">
                                     @endif
                                 </button>
                             </div>
                             <div x-show="open" @click.away="open = false" class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" style="display:none">
-                                <a href="{{ route('profile') }}" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">
-                                    Profile
-                                </a>
-                                <a href="{{ route('settings') }}" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">
-                                    Settings
-                                </a>
+                                @if(Auth::user()->isMember())
+                                    <a href="{{ route('profile') }}" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">
+                                        Profile
+                                    </a>
+                                    <a href="{{ route('settings') }}" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">
+                                        Settings
+                                    </a>
+                                @endif
                                 @if(Auth::user()->isAdmin())
                                     <a href="{{ route('admin') }}" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">
                                         Admin
@@ -91,7 +93,7 @@
                             Home
                         </a>
                     @endif
-                    @if(Auth::user()->isAdmin())
+                    @if(Auth::user()->isMember())
                         @if(isset($page) && $page == "profile")
                             <a href="{{ route('profile') }}" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white">
                                 Profile

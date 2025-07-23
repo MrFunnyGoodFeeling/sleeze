@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\User;
+namespace App\Livewire\Dashboard;
 
 use Livewire\Component;
 
@@ -28,7 +28,7 @@ class Settings extends Component
     public $alertDanger = "";
 
     public function render(){
-        return view('livewire.user.settings');
+        return view('livewire.dashboard.settings');
     }
 
     public function update()
