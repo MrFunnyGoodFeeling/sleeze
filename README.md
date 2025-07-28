@@ -1,1 +1,1 @@
-Laravel Starter Pack
+Laravel Starter Pack.

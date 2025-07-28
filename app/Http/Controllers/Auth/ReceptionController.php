@@ -30,8 +30,8 @@ class ReceptionController extends Controller
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
-            'slug' => Str::slug($request->input('name'), '-'),
-            'mask' => Str::uuid(),
+
+            'uuid' => Str::uuid(),
         ]);
 
         Auth::login($user);
