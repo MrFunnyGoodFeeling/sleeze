@@ -22,7 +22,7 @@ return new class extends Migration
 
             $table->uuid('uuid');
             $table->boolean('captcha')->default(0);
-            $table->timestamp('suspended')->default(0);
+            $table->timestamp('suspended')->nullable();
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
