@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest', 'throttle:60,1')->group(function()
@@ -25,6 +24,4 @@ Route::middleware('member', 'throttle:100,1')->group(function()
     Route::get('/profile', [\App\Http\Controllers\DashboardController::class, 'profile'])->name('profile');
     Route::get('/settings', [\App\Http\Controllers\DashboardController::class, 'settings'])->name('settings');
 });
-Route::view('/restricted-area', 'operator.restricted-area')->name('restricted-area');
-
-// YOU ARE HERE!
+Route::view('/restricted-area', 'operator.restricted-area')->middleware('throttle:60,1')->name('restricted-area');
