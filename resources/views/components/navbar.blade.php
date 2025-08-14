@@ -31,17 +31,6 @@
                                         Home
                                     </a>
                                 @endif
-                                @if(Auth::user()->isAdmin())
-                                    @if(isset($page) && $page == "admin")
-                                        <a href="{{ route('admin') }}" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white">
-                                            Admin
-                                        </a>
-                                    @else
-                                        <a href="{{ route('admin') }}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
-                                            Admin
-                                        </a>
-                                    @endif
-                                @endif
                             </div>
                         </div>
                     </div>
@@ -92,26 +81,6 @@
                         <a href="{{ route('dashboard') }}" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
                             Home
                         </a>
-                    @endif
-                    @if(Auth::user()->isMember())
-                        @if(isset($page) && $page == "profile")
-                            <a href="{{ route('profile') }}" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white">
-                                Profile
-                            </a>
-                        @else
-                            <a href="{{ route('profile') }}" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
-                                Profile
-                            </a>
-                        @endif
-                        @if(isset($page) && $page == "settings")
-                            <a href="{{ route('settings') }}" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white">
-                                Settings
-                            </a>
-                        @else
-                            <a href="{{ route('settings') }}" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
-                                Settings
-                            </a>
-                        @endif
                     @endif
                 </div>
             </div>

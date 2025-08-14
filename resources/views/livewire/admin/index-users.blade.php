@@ -1,7 +1,7 @@
 <div class="bg-white py-4">
     <div class="mx-auto max-w-7xl">
         <div class="sm:px-6 lg:px-8">
-            <div class="overflow-visible border-t border-b sm:border-r sm:border-l border-gray-200 sm:rounded-md shadow-sm">
+            <div class="overflow-hidden border-t border-b sm:border-r sm:border-l border-gray-200 sm:rounded-md shadow-sm">
                 <table class="w-full divide-y divide-gray-200 relative">
                     <thead class="bg-gray-50">
                         <tr>

@@ -13,7 +13,6 @@ Route::post('/logout', [App\Http\Controllers\Auth\ReceptionController::class, 'l
 Route::middleware('admin')->group(function()
 {
     Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index'])->name('admin');
-    Route::get('/admin/users', [\App\Http\Controllers\AdminController::class, 'users']);
 });
 Route::middleware('auth', 'throttle:100,1')->group(function()
 {
@@ -24,4 +23,4 @@ Route::middleware('member', 'throttle:100,1')->group(function()
     Route::get('/profile', [\App\Http\Controllers\DashboardController::class, 'profile'])->name('profile');
     Route::get('/settings', [\App\Http\Controllers\DashboardController::class, 'settings'])->name('settings');
 });
-Route::view('/restricted-area', 'operator.restricted-area')->middleware('throttle:60,1')->name('restricted-area');
+Route::view('/restricted-area', 'operator.restricted-area')->middleware('throttle:100,1')->name('restricted-area');

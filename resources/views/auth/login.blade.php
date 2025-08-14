@@ -44,7 +44,9 @@ Login
             </form>
         </div>
     </div>
-    <x-footer />
+    <div>
+        <!-- Touch Nothing -->
+    </div>
 </div>
 
 @endsection
