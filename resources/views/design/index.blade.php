@@ -1,13 +1,13 @@
 @extends('layouts.wrapper')
 
 @section('page_title')
-Admin
+Design · Admin
 @endsection
 
 @section('content')
 
 <!-- Navbar -->
-<x-navbar page="admin" />
+<x-navbar page="design" />
 
 <!-- Breadcrumb -->
 <div class="bg-white border-b border-gray-200">
@@ -17,7 +17,7 @@ Admin
                 <ol role="list" class="flex space-x-1">
                     <li>
                         <p class="text-gray-500 text-sm">
-                            Admin
+                            Design
                         </p>
                     </li>
                 </ol>
@@ -41,13 +41,28 @@ Admin
                     <div>
                         <ul class="space-y-1">
                             <li>
-                                <a href="/admin/users" class="hover:text-indigo-500">
-                                    Users
+                                <a href="/design/dashboard" class="hover:text-indigo-500">
+                                    Template: Dashboard
                                 </a>
                             </li>
                             <li>
-                                <a href="/design" class="hover:text-indigo-500">
-                                    Design
+                                <a href="/design/bucket" class="hover:text-indigo-500">
+                                    Bucket (Dashboard Form Livewire, Badges)
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/design/breadcrumbs" class="hover:text-indigo-500">
+                                    Breadcrumbs
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/design/modals" class="hover:text-indigo-500">
+                                    Modals
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/design/tables" class="hover:text-indigo-500">
+                                    Tables
                                 </a>
                             </li>
                         </ul>
@@ -60,8 +75,5 @@ Admin
 
 </div>
 <!-- END OF Main -->
-
-<!-- Footer -->
-<x-footer />
 
 @endsection
