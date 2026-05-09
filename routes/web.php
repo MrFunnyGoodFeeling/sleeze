@@ -33,6 +33,7 @@ Route::middleware('auth', 'throttle:100,1')->group(function () {
 // Admin (does not need throttle)
 Route::middleware('admin')->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+    Route::view('/design', 'design.index')->name('design');
 });
 
 // Member
