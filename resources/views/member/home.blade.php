@@ -37,4 +37,7 @@ Member
 </div>
 <!-- END OF Section -->
 
+<!-- Footer -->
+<x-footer />
+
 @endsection

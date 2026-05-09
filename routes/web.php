@@ -1,42 +1,41 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Auth\ReceptionController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MemberController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\WrapperController;
 use Illuminate\Support\Facades\Route;
 
 // Wrapper
-Route::middleware('guest', 'throttle:100,1')->group(function()
-{
-    Route::get('/', [\App\Http\Controllers\WrapperController::class, 'landing'])->name('landing');
-    Route::get('/register', [App\Http\Controllers\Auth\ReceptionController::class, 'create'])->name('register');
-    Route::post('/register', [App\Http\Controllers\Auth\ReceptionController::class, 'store']);
-    Route::get('/login', [App\Http\Controllers\Auth\ReceptionController::class, 'login'])->name('login');
-    Route::post('/login', [App\Http\Controllers\Auth\ReceptionController::class, 'verifyLogin']);
+Route::middleware('guest', 'throttle:100,1')->group(function () {
+    Route::get('/', [WrapperController::class, 'landing'])->name('landing');
+    Route::get('/register', [ReceptionController::class, 'create'])->name('register');
+    Route::post('/register', [ReceptionController::class, 'store']);
+    Route::get('/login', [ReceptionController::class, 'login'])->name('login');
+    Route::post('/login', [ReceptionController::class, 'verifyLogin']);
 
     // Route::view('/', 'wrapper.under-construction')->name('landing');
     // Route::view('/register', 'auth.registration-closed')->name('register');
 });
-Route::middleware('throttle:100,1')->group(function()
-{
+Route::middleware('throttle:100,1')->group(function () {
     //
 });
 
 // Dashboard (Auth)
-Route::middleware('auth', 'throttle:100,1')->group(function()
-{
-    Route::get('/dashboard', [\App\Http\Controllers\DashboardController::class, 'home'])->name('dashboard');
-    Route::get('/profile', [\App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
-    Route::put('/profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile/avatars/{avatar}', [\App\Http\Controllers\ProfileController::class, 'destroyAvatar'])->name('profile.avatars.destroy');
-    Route::post('/logout', [App\Http\Controllers\Auth\ReceptionController::class, 'logout'])->name('logout');
+Route::middleware('auth', 'throttle:100,1')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'home'])->name('dashboard');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::post('/logout', [ReceptionController::class, 'logout'])->name('logout');
 });
 
 // Admin (does not need throttle)
-Route::middleware('admin')->group(function()
-{
-    Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index'])->name('admin');
+Route::middleware('admin')->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 });
 
 // Member
-Route::middleware('member', 'throttle:100,1')->group(function()
-{
-    Route::get('/member', [\App\Http\Controllers\MemberController::class, 'home'])->name('member');
+Route::middleware('member', 'throttle:100,1')->group(function () {
+    Route::get('/member', [MemberController::class, 'home'])->name('member');
 });

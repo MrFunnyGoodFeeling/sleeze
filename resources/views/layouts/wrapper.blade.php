@@ -10,7 +10,7 @@
         <meta name="keywords" content="">
 
         <!-- Title -->
-        <title>@yield('page_title') · Peggy</title>
+        <title>@yield('page_title') · Sleeze</title>
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
