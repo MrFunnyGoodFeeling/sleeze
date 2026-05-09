@@ -46,6 +46,9 @@
                                 class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5" style="display:none">
                                 <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
                                 <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
+                                @if(Auth::user()->isAdmin())
+                                    <a href="{{ route('admin') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Admin</a>
+                                @endif
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
                                     <button type="submit" class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100">Sign out</button>
@@ -86,7 +89,7 @@
                     </div>
                     <div class="ml-3">
                         <div class="text-base/5 font-medium text-white">{{ auth()->user()->name }}</div>
-                        <div class="text-sm font-medium text-gray-400">{{ auth()->user()->email }}</div>
+                        <div class="text-sm font-medium text-gray-400">Member</div>
                     </div>
                     <button type="button" class="relative ml-auto shrink-0 rounded-full p-1 text-gray-400 hover:text-white focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500">
                         <span class="absolute -inset-1.5"></span>
@@ -99,6 +102,9 @@
                 <div class="mt-3 space-y-1 px-2">
                     <a href="{{ route('profile.edit') }}" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-white/5 hover:text-white">Profile</a>
                     <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-white/5 hover:text-white">Settings</a>
+                    @if(Auth::user()->isAdmin())
+                        <a href="{{ route('admin') }}" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-white/5 hover:text-white">Admin</a>
+                    @endif
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <button type="submit" class="block w-full rounded-md px-3 py-2 text-left text-base font-medium text-gray-400 hover:bg-white/5 hover:text-white">Sign out</button>

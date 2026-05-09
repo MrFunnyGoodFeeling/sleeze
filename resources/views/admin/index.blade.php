@@ -31,7 +31,7 @@ Admin
 <div class="bg-white py-6">
     <div class="mx-auto max-w-7xl">
         <div class="px-4 sm:px-6 lg:px-8">
-            Nothing here yet...
+            password suggestion: {{ $password }}
         </div>
     </div>
 </div>
