@@ -9,10 +9,12 @@ Route::middleware('guest', 'throttle:60,1')->group(function()
     Route::post('/register', [App\Http\Controllers\Auth\ReceptionController::class, 'store']);
     Route::get('/login', [App\Http\Controllers\Auth\ReceptionController::class, 'login'])->name('login');
     Route::post('/login', [App\Http\Controllers\Auth\ReceptionController::class, 'verifyLogin']);
+
+    // Route::view('/register', 'auth.registration-closed')->name('register');
 });
 Route::middleware('throttle:100,1')->group(function()
 {
-    Route::view('/forms', 'design.index');
+    //
 });
 
 // Dashboard (Auth)
