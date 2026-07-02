@@ -29,7 +29,7 @@ Settings
 <x-alert />
 
 <!-- Settings Component -->
-<livewire:user.settings />
+<livewire:dashboard.settings />
 
 <!-- Footer -->
 <x-footer />

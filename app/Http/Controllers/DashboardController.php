@@ -3,19 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\Role;
-use App\Models\User;
 use App\Models\UserProfile;
-
-use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
-
     public function home()
     {
         $this->seed();
+
+        if(Auth::user()->roles()->doesntExist())
+        {
+            $role = Role::firstOrCreate(['name' => 'member']);
+            Auth::user()->roles()->attach($role->id);
+        }
 
         $profile = UserProfile::firstOrCreate(['user_id' => Auth::id()]);
 
@@ -26,26 +29,18 @@ class DashboardController extends Controller
     {
         $profile = UserProfile::firstOrCreate(['user_id' => Auth::id()]);
 
-        return view('users.profile', compact('profile'));
+        return view('dashboard.profile', compact('profile'));
     }
 
-    public function editProfile()
+    public function settings()
     {
-        $profile = UserProfile::firstOrCreate(['user_id' => Auth::id()]);
-
-        return view('users.edit-profile', compact('profile'));
-    }
-
-public function settings(): \Illuminate\View\View
-    {
-        return view('users.settings');
+        return view('dashboard.settings');
     }
 
     private function seed()
     {
         $roles = Role::all();
-        if($roles->isEmpty())
-        {
+        if ($roles->isEmpty()) {
             $role = Role::create(['name' => 'admin']);
             Auth::user()->roles()->attach($role->id);
             $role = Role::create(['name' => 'member']);

@@ -3,20 +3,18 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 #[Fillable(['name', 'email', 'password', 'uuid'])]
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
-
     use HasFactory, Notifiable;
 
     protected function casts(): array
@@ -27,24 +25,28 @@ class User extends Authenticatable
         ];
     }
 
-    public function roles(){
+    public function roles()
+    {
         return $this->belongsToMany(Role::class);
     }
 
-    public function isAdmin(){
+    public function isAdmin()
+    {
         return $this->roles()->where('name', 'admin')->exists();
     }
 
-    public function isMember(){
+    public function isMember()
+    {
         return $this->roles()->whereIn('name', ['admin', 'member'])->exists();
     }
 
-    public function profile(): HasOne{
+    public function profile(): HasOne
+    {
         return $this->hasOne(UserProfile::class);
     }
 
-    public function avatars(): HasMany{
+    public function avatars(): HasMany
+    {
         return $this->hasMany(UserAvatar::class);
     }
-
 }

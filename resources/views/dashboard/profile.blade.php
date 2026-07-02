@@ -1,7 +1,7 @@
 @extends('layouts.wrapper')
 
 @section('page_title')
-Edit Profile
+Profile
 @endsection
 
 @section('content')
@@ -16,11 +16,9 @@ Edit Profile
             <nav class="flex items-center justify-between h-12">
                 <ol role="list" class="flex space-x-1">
                     <li>
-                        <a href="{{ route('profile') }}" class="text-gray-500 text-sm hover:text-gray-700">Profile</a>
-                    </li>
-                    <li class="text-gray-400 text-sm">/</li>
-                    <li>
-                        <p class="text-gray-500 text-sm">Edit</p>
+                        <p class="text-gray-500 text-sm">
+                            Profile
+                        </p>
                     </li>
                 </ol>
             </nav>
@@ -32,8 +30,14 @@ Edit Profile
 <!-- Alerts -->
 <x-alert />
 
-<!-- Edit Profile Component -->
-<livewire:user.edit-profile />
+<!-- Main -->
+<div class="divide-y divide-gray-200">
+
+    <!-- Section -->
+    <livewire:profile.edit />
+
+</div>
+<!-- END OF Main -->
 
 <!-- Footer -->
 <x-footer />

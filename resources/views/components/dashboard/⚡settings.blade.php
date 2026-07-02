@@ -7,6 +7,7 @@ use Illuminate\Validation\Rules\Password;
 
 new class extends Component
 {
+
     public string $name = '';
     public string $email = '';
 
@@ -57,6 +58,7 @@ new class extends Component
 
         $this->alertPasswordSuccess = 'Password updated.';
     }
+
 };
 ?>
 
@@ -141,7 +143,6 @@ new class extends Component
                 <div class="max-w-xl">
                     <h2 class="text-base font-semibold text-gray-900">Password</h2>
                     <p class="mt-1 text-sm text-gray-500">Update your password.</p>
-
                     <form wire:submit="updatePassword" class="mt-6 space-y-5">
                         <div>
                             <label for="currentPassword" class="block text-sm font-medium text-gray-700 mb-1">Current password</label>
