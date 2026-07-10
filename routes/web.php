@@ -33,6 +33,6 @@ Route::middleware('admin')->group(function () {
 
 // Member
 Route::middleware('member', 'throttle:100,1')->group(function () {
-    Route::get('/profile', [DashboardController::class, 'profile'])->name('profile');
+    // Route::get('/profile', [DashboardController::class, 'profile'])->name('profile');
     Route::get('/settings', [DashboardController::class, 'settings'])->name('settings');
 });

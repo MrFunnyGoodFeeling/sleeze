@@ -15,6 +15,7 @@ use Illuminate\Notifications\Notifiable;
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
+
     use HasFactory, Notifiable;
 
     protected function casts(): array
@@ -25,28 +26,16 @@ class User extends Authenticatable
         ];
     }
 
-    public function roles()
-    {
+    public function roles(){
         return $this->belongsToMany(Role::class);
     }
 
-    public function isAdmin()
-    {
+    public function isAdmin(){
         return $this->roles()->where('name', 'admin')->exists();
     }
 
-    public function isMember()
-    {
+    public function isMember(){
         return $this->roles()->whereIn('name', ['admin', 'member'])->exists();
     }
 
-    public function profile(): HasOne
-    {
-        return $this->hasOne(UserProfile::class);
-    }
-
-    public function avatars(): HasMany
-    {
-        return $this->hasMany(UserAvatar::class);
-    }
 }

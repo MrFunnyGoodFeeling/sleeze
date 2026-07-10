@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\Role;
-use App\Models\UserProfile;
 
 class DashboardController extends Controller
 {
+
     public function home()
     {
         $this->seed();
@@ -20,20 +20,10 @@ class DashboardController extends Controller
             Auth::user()->roles()->attach($role->id);
         }
 
-        $profile = UserProfile::firstOrCreate(['user_id' => Auth::id()]);
-
         return view('dashboard.home');
     }
 
-    public function profile()
-    {
-        $profile = UserProfile::firstOrCreate(['user_id' => Auth::id()]);
-
-        return view('dashboard.profile', compact('profile'));
-    }
-
-    public function settings()
-    {
+    public function settings(){
         return view('dashboard.settings');
     }
 
